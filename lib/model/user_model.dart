@@ -7,8 +7,8 @@ part 'user_model.g.dart';
 @freezed
 class UserModel with _$UserModel {
   factory UserModel({
-    /// The device id of the user.
-    required String deviceID,
+    /// Unique id of the user.
+    required String uid,
 
     /// Firebase Cloud Message token for push notifications.
     String? fcmToken,
