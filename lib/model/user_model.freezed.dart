@@ -22,9 +22,9 @@ class _$UserModelTearOff {
   const _$UserModelTearOff();
 
   _UserModel call(
-      {required String deviceID, String? fcmToken, required String username}) {
+      {required String uid, String? fcmToken, required String username}) {
     return _UserModel(
-      deviceID: deviceID,
+      uid: uid,
       fcmToken: fcmToken,
       username: username,
     );
@@ -40,8 +40,8 @@ const $UserModel = _$UserModelTearOff();
 
 /// @nodoc
 mixin _$UserModel {
-  /// The device id of the user.
-  String get deviceID => throw _privateConstructorUsedError;
+  /// Unique id of the user.
+  String get uid => throw _privateConstructorUsedError;
 
   /// Firebase Cloud Message token for push notifications.
   String? get fcmToken => throw _privateConstructorUsedError;
@@ -59,7 +59,7 @@ mixin _$UserModel {
 abstract class $UserModelCopyWith<$Res> {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
       _$UserModelCopyWithImpl<$Res>;
-  $Res call({String deviceID, String? fcmToken, String username});
+  $Res call({String uid, String? fcmToken, String username});
 }
 
 /// @nodoc
@@ -72,14 +72,14 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? deviceID = freezed,
+    Object? uid = freezed,
     Object? fcmToken = freezed,
     Object? username = freezed,
   }) {
     return _then(_value.copyWith(
-      deviceID: deviceID == freezed
-          ? _value.deviceID
-          : deviceID // ignore: cast_nullable_to_non_nullable
+      uid: uid == freezed
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
               as String,
       fcmToken: fcmToken == freezed
           ? _value.fcmToken
@@ -99,7 +99,7 @@ abstract class _$UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
           _UserModel value, $Res Function(_UserModel) then) =
       __$UserModelCopyWithImpl<$Res>;
   @override
-  $Res call({String deviceID, String? fcmToken, String username});
+  $Res call({String uid, String? fcmToken, String username});
 }
 
 /// @nodoc
@@ -113,14 +113,14 @@ class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? deviceID = freezed,
+    Object? uid = freezed,
     Object? fcmToken = freezed,
     Object? username = freezed,
   }) {
     return _then(_UserModel(
-      deviceID: deviceID == freezed
-          ? _value.deviceID
-          : deviceID // ignore: cast_nullable_to_non_nullable
+      uid: uid == freezed
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
               as String,
       fcmToken: fcmToken == freezed
           ? _value.fcmToken
@@ -137,15 +137,15 @@ class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
-  _$_UserModel({required this.deviceID, this.fcmToken, required this.username});
+  _$_UserModel({required this.uid, this.fcmToken, required this.username});
 
   factory _$_UserModel.fromJson(Map<String, dynamic> json) =>
       _$$_UserModelFromJson(json);
 
   @override
 
-  /// The device id of the user.
-  final String deviceID;
+  /// Unique id of the user.
+  final String uid;
   @override
 
   /// Firebase Cloud Message token for push notifications.
@@ -157,7 +157,7 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UserModel(deviceID: $deviceID, fcmToken: $fcmToken, username: $username)';
+    return 'UserModel(uid: $uid, fcmToken: $fcmToken, username: $username)';
   }
 
   @override
@@ -165,7 +165,7 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'UserModel'))
-      ..add(DiagnosticsProperty('deviceID', deviceID))
+      ..add(DiagnosticsProperty('uid', uid))
       ..add(DiagnosticsProperty('fcmToken', fcmToken))
       ..add(DiagnosticsProperty('username', username));
   }
@@ -175,8 +175,7 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _UserModel &&
-            (identical(other.deviceID, deviceID) ||
-                other.deviceID == deviceID) &&
+            (identical(other.uid, uid) || other.uid == uid) &&
             (identical(other.fcmToken, fcmToken) ||
                 other.fcmToken == fcmToken) &&
             (identical(other.username, username) ||
@@ -184,7 +183,7 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, deviceID, fcmToken, username);
+  int get hashCode => Object.hash(runtimeType, uid, fcmToken, username);
 
   @JsonKey(ignore: true)
   @override
@@ -199,7 +198,7 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
 
 abstract class _UserModel implements UserModel {
   factory _UserModel(
-      {required String deviceID,
+      {required String uid,
       String? fcmToken,
       required String username}) = _$_UserModel;
 
@@ -208,8 +207,8 @@ abstract class _UserModel implements UserModel {
 
   @override
 
-  /// The device id of the user.
-  String get deviceID;
+  /// Unique id of the user.
+  String get uid;
   @override
 
   /// Firebase Cloud Message token for push notifications.

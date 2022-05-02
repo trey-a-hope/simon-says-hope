@@ -22,13 +22,13 @@ class _$FeelingModelTearOff {
   const _$FeelingModelTearOff();
 
   _FeelingModel call(
-      {required String deviceID,
+      {required String uid,
       String? id,
       required String heartFeeling,
       required String mindFeeling,
       required String soulFeeling}) {
     return _FeelingModel(
-      deviceID: deviceID,
+      uid: uid,
       id: id,
       heartFeeling: heartFeeling,
       mindFeeling: mindFeeling,
@@ -46,8 +46,8 @@ const $FeelingModel = _$FeelingModelTearOff();
 
 /// @nodoc
 mixin _$FeelingModel {
-  /// The device id of the user.
-  String get deviceID => throw _privateConstructorUsedError;
+  /// Unique id of the user.
+  String get uid => throw _privateConstructorUsedError;
 
   /// ID of the feeling.
   String? get id => throw _privateConstructorUsedError;
@@ -73,7 +73,7 @@ abstract class $FeelingModelCopyWith<$Res> {
           FeelingModel value, $Res Function(FeelingModel) then) =
       _$FeelingModelCopyWithImpl<$Res>;
   $Res call(
-      {String deviceID,
+      {String uid,
       String? id,
       String heartFeeling,
       String mindFeeling,
@@ -90,16 +90,16 @@ class _$FeelingModelCopyWithImpl<$Res> implements $FeelingModelCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? deviceID = freezed,
+    Object? uid = freezed,
     Object? id = freezed,
     Object? heartFeeling = freezed,
     Object? mindFeeling = freezed,
     Object? soulFeeling = freezed,
   }) {
     return _then(_value.copyWith(
-      deviceID: deviceID == freezed
-          ? _value.deviceID
-          : deviceID // ignore: cast_nullable_to_non_nullable
+      uid: uid == freezed
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
               as String,
       id: id == freezed
           ? _value.id
@@ -129,7 +129,7 @@ abstract class _$FeelingModelCopyWith<$Res>
       __$FeelingModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String deviceID,
+      {String uid,
       String? id,
       String heartFeeling,
       String mindFeeling,
@@ -148,16 +148,16 @@ class __$FeelingModelCopyWithImpl<$Res> extends _$FeelingModelCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? deviceID = freezed,
+    Object? uid = freezed,
     Object? id = freezed,
     Object? heartFeeling = freezed,
     Object? mindFeeling = freezed,
     Object? soulFeeling = freezed,
   }) {
     return _then(_FeelingModel(
-      deviceID: deviceID == freezed
-          ? _value.deviceID
-          : deviceID // ignore: cast_nullable_to_non_nullable
+      uid: uid == freezed
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
               as String,
       id: id == freezed
           ? _value.id
@@ -183,7 +183,7 @@ class __$FeelingModelCopyWithImpl<$Res> extends _$FeelingModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_FeelingModel with DiagnosticableTreeMixin implements _FeelingModel {
   _$_FeelingModel(
-      {required this.deviceID,
+      {required this.uid,
       this.id,
       required this.heartFeeling,
       required this.mindFeeling,
@@ -194,8 +194,8 @@ class _$_FeelingModel with DiagnosticableTreeMixin implements _FeelingModel {
 
   @override
 
-  /// The device id of the user.
-  final String deviceID;
+  /// Unique id of the user.
+  final String uid;
   @override
 
   /// ID of the feeling.
@@ -215,7 +215,7 @@ class _$_FeelingModel with DiagnosticableTreeMixin implements _FeelingModel {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'FeelingModel(deviceID: $deviceID, id: $id, heartFeeling: $heartFeeling, mindFeeling: $mindFeeling, soulFeeling: $soulFeeling)';
+    return 'FeelingModel(uid: $uid, id: $id, heartFeeling: $heartFeeling, mindFeeling: $mindFeeling, soulFeeling: $soulFeeling)';
   }
 
   @override
@@ -223,7 +223,7 @@ class _$_FeelingModel with DiagnosticableTreeMixin implements _FeelingModel {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'FeelingModel'))
-      ..add(DiagnosticsProperty('deviceID', deviceID))
+      ..add(DiagnosticsProperty('uid', uid))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('heartFeeling', heartFeeling))
       ..add(DiagnosticsProperty('mindFeeling', mindFeeling))
@@ -235,8 +235,7 @@ class _$_FeelingModel with DiagnosticableTreeMixin implements _FeelingModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _FeelingModel &&
-            (identical(other.deviceID, deviceID) ||
-                other.deviceID == deviceID) &&
+            (identical(other.uid, uid) || other.uid == uid) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.heartFeeling, heartFeeling) ||
                 other.heartFeeling == heartFeeling) &&
@@ -247,8 +246,8 @@ class _$_FeelingModel with DiagnosticableTreeMixin implements _FeelingModel {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, deviceID, id, heartFeeling, mindFeeling, soulFeeling);
+  int get hashCode =>
+      Object.hash(runtimeType, uid, id, heartFeeling, mindFeeling, soulFeeling);
 
   @JsonKey(ignore: true)
   @override
@@ -263,7 +262,7 @@ class _$_FeelingModel with DiagnosticableTreeMixin implements _FeelingModel {
 
 abstract class _FeelingModel implements FeelingModel {
   factory _FeelingModel(
-      {required String deviceID,
+      {required String uid,
       String? id,
       required String heartFeeling,
       required String mindFeeling,
@@ -274,8 +273,8 @@ abstract class _FeelingModel implements FeelingModel {
 
   @override
 
-  /// The device id of the user.
-  String get deviceID;
+  /// Unique id of the user.
+  String get uid;
   @override
 
   /// ID of the feeling.

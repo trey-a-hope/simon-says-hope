@@ -1,11 +1,20 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:simon_says_hope/constants/globals.dart';
 import 'package:simon_says_hope/extensions/hex_color.dart';
 
 class SplashView extends StatelessWidget {
-  const SplashView({Key? key}) : super(key: key);
+  SplashView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // Proceed to main page after 3 seconds.
+    Timer(
+      Duration(seconds: 3),
+      () => Get.offAllNamed(Globals.ROUTES_HOME),
+    );
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -26,6 +35,14 @@ class SplashView extends StatelessWidget {
           children: [
             Column(
               children: [
+                Text(
+                  'Simon Says Hope',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 32,
+                    color: Colors.white,
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: Text(

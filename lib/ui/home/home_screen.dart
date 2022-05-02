@@ -12,9 +12,11 @@ class HomeScreen extends StatelessWidget {
     return GetBuilder<HomeViewModel>(
       init: HomeViewModel(),
       builder: (model) => Scaffold(
+        
           floatingActionButton:
               FloatingActionButton(onPressed: () => model.createFeeling()),
           appBar: AppBar(
+            automaticallyImplyLeading: false,
             title: Text('Home'),
           ),
           body: Column(

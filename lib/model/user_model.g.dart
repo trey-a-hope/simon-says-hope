@@ -7,14 +7,14 @@ part of 'user_model.dart';
 // **************************************************************************
 
 _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
-      deviceID: json['deviceID'] as String,
+      uid: json['uid'] as String,
       fcmToken: json['fcmToken'] as String?,
       username: json['username'] as String,
     );
 
 Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
     <String, dynamic>{
-      'deviceID': instance.deviceID,
+      'uid': instance.uid,
       'fcmToken': instance.fcmToken,
       'username': instance.username,
     };

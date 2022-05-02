@@ -18,7 +18,7 @@ class UserService extends GetxService {
       final WriteBatch batch = FirebaseFirestore.instance.batch();
 
       // Create document reference of user.
-      final DocumentReference userDocRef = _usersDB.doc(user.deviceID);
+      final DocumentReference userDocRef = _usersDB.doc(user.uid);
 
       // Set the user data to the document reference.
       batch.set(

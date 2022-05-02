@@ -13,7 +13,7 @@ class CreateFeelingScreen extends StatelessWidget {
       init: CreateFeelingViewModel(),
       builder: (model) => Scaffold(
           floatingActionButton:
-              FloatingActionButton(onPressed: () => model.createFeeling()),
+              FloatingActionButton(onPressed: () => {}),
           appBar: AppBar(
             title: Text('Create Feeling'),
           ),

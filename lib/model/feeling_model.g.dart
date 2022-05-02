@@ -8,7 +8,7 @@ part of 'feeling_model.dart';
 
 _$_FeelingModel _$$_FeelingModelFromJson(Map<String, dynamic> json) =>
     _$_FeelingModel(
-      deviceID: json['deviceID'] as String,
+      uid: json['uid'] as String,
       id: json['id'] as String?,
       heartFeeling: json['heartFeeling'] as String,
       mindFeeling: json['mindFeeling'] as String,
@@ -17,7 +17,7 @@ _$_FeelingModel _$$_FeelingModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_FeelingModelToJson(_$_FeelingModel instance) =>
     <String, dynamic>{
-      'deviceID': instance.deviceID,
+      'uid': instance.uid,
       'id': instance.id,
       'heartFeeling': instance.heartFeeling,
       'mindFeeling': instance.mindFeeling,

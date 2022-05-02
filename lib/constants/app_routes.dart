@@ -1,9 +1,14 @@
 import 'package:get/get.dart';
+import 'package:simon_says_hope/constants/globals.dart';
+import 'package:simon_says_hope/splash_screen.dart';
+import 'package:simon_says_hope/ui/home/home_screen.dart';
 
 class AppRoutes {
   AppRoutes._();
   static final List<GetPage<dynamic>> routes = [
-    // GetPage(name: '/', page: () => const SplashView()),
+    GetPage(name: '/', page: () => SplashView()),
+    GetPage(name: Globals.ROUTES_HOME, page: () => HomeScreen()),
+
     // GetPage(name: Globals.ROUTES_CONTACT, page: () => ContactView()),
     // GetPage(
     //     name: Globals.ROUTES_CREATE_CRITIQUE, page: () => CreateCritiqueView()),
