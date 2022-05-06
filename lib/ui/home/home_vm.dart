@@ -1,6 +1,6 @@
 part of 'home_screen.dart';
 
-class HomeViewModel extends GetxController {
+class _HomeViewModel extends GetxController {
   @override
   void onInit() async {
     super.onInit();
@@ -12,6 +12,6 @@ class HomeViewModel extends GetxController {
   }
 
   void createFeeling() {
-    print('create feeling');
+    Get.toNamed(Globals.ROUTES_CREATE_FEELING);
   }
 }
