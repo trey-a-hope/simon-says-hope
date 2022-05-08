@@ -8,6 +8,7 @@ class Globals {
   static const String ROUTES_MAIN = '/main';
   static const String ROUTES_CREATE_FEELING = '/create_feeling';
   static const String ROUTES_CREATE_FEELING_SUCCESS = '/create_feeling_success';
+  static const String ROUTES_SETTINGS = '/settings';
 
   /// Personal
   static const String DARK_MODE_ENABLED = 'dark_mode_enabled';

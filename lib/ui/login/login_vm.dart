@@ -39,8 +39,6 @@ class _LoginViewModel extends GetxController {
         email: _emailController.text,
         password: _passwordController.text,
       );
-
-      Get.toNamed(Globals.ROUTES_HOME);
     } catch (e) {
       _isLoading = false;
       _error = '$e';
@@ -53,5 +51,4 @@ class _LoginViewModel extends GetxController {
     _error = null;
     update();
   }
-
 }

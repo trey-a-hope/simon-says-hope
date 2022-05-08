@@ -15,7 +15,7 @@ class _MainViewModel extends GetxController {
 
   /// Users database collection reference.
   final CollectionReference _usersDB =
-      FirebaseFirestore.instance.collection('users');
+  FirebaseFirestore.instance.collection('users');
 
   /// Instantiate user service.
   UserRepository _userRepository = Get.find();
@@ -78,22 +78,6 @@ class _MainViewModel extends GetxController {
       } else {
         // Proceed to signup page.
         Get.offAllNamed(Globals.ROUTES_SIGNUP);
-
-        // // Create user in firebase.
-        // UserModel newUser = UserModel(
-        //   imgUrl: _firebaseUser.photoURL ?? Globals.DUMMY_PROFILE_PHOTO_URL,
-        //   created: DateTime.now().toUtc(),
-        //   modified: DateTime.now().toUtc(),
-        //   uid: _firebaseUser.uid,
-        //   username: _firebaseUser.displayName ?? 'I NEED A NAME',
-        //   email: _firebaseUser.email ?? '',
-        //   isOnline: true,
-        //   showAds: true,
-        //   watchList: [],
-        //   blockedUsers: [],
-        // );
-        //
-        // await _userService.createUser(user: newUser);
       }
 
       // Proceed to home page.

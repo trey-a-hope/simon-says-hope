@@ -90,11 +90,30 @@ class LoginScreen extends StatelessWidget {
                         ),
                         model.isLoading
                             ? Center(child: CircularProgressIndicator())
-                            : ElevatedButton.icon(
-                                onPressed: () => model.login(),
-                                icon: Icon(Icons.login),
-                                label: Text('Login'),
-                              ),
+                            : Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal:
+                                        MediaQuery.of(context).size.width *
+                                            0.2),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    ElevatedButton.icon(
+                                      onPressed: () => model.login(),
+                                      icon: Icon(Icons.login),
+                                      label: Text('Login'),
+                                    ),
+                                    ElevatedButton.icon(
+                                      onPressed: () => Get.toNamed(
+                                        Globals.ROUTES_SIGNUP,
+                                      ),
+                                      icon: Icon(Icons.person),
+                                      label: Text('Signup'),
+                                    ),
+                                  ],
+                                ),
+                              )
                       ],
                     )
                   : Column(
