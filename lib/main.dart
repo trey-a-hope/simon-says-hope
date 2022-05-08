@@ -72,7 +72,7 @@ class MyApp extends StatelessWidget with WidgetsBindingObserver {
       darkTheme: AppThemes.darkTheme,
       themeMode: ThemeMode.system,
       initialBinding: InitialBinding(),
-      initialRoute: '/',
+      initialRoute: Globals.ROUTES_MAIN,
       getPages: AppRoutes.routes,
     );
   }

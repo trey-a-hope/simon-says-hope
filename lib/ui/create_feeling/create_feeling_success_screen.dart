@@ -10,7 +10,7 @@ class CreateFeelingSuccessScreen extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  ConfettiController _confettiController =
+  final ConfettiController _confettiController =
       ConfettiController(duration: const Duration(seconds: 10));
 
   @override

@@ -13,7 +13,7 @@ class SplashView extends StatelessWidget {
     // Proceed to main page after 3 seconds.
     Timer(
       Duration(seconds: 3),
-      () => Get.offAllNamed(Globals.ROUTES_HOME),
+      () => Get.offAllNamed(Globals.ROUTES_MAIN),
     );
     return Scaffold(
       body: Container(

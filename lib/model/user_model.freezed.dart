@@ -22,11 +22,15 @@ class _$UserModelTearOff {
   const _$UserModelTearOff();
 
   _UserModel call(
-      {required String uid, String? fcmToken, required String username}) {
+      {required String uid,
+      String? fcmToken,
+      required String username,
+      required String email}) {
     return _UserModel(
       uid: uid,
       fcmToken: fcmToken,
       username: username,
+      email: email,
     );
   }
 
@@ -49,6 +53,9 @@ mixin _$UserModel {
   /// Username of the user.
   String get username => throw _privateConstructorUsedError;
 
+  /// Email of the user.
+  String get email => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $UserModelCopyWith<UserModel> get copyWith =>
@@ -59,7 +66,7 @@ mixin _$UserModel {
 abstract class $UserModelCopyWith<$Res> {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
       _$UserModelCopyWithImpl<$Res>;
-  $Res call({String uid, String? fcmToken, String username});
+  $Res call({String uid, String? fcmToken, String username, String email});
 }
 
 /// @nodoc
@@ -75,6 +82,7 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
     Object? uid = freezed,
     Object? fcmToken = freezed,
     Object? username = freezed,
+    Object? email = freezed,
   }) {
     return _then(_value.copyWith(
       uid: uid == freezed
@@ -89,6 +97,10 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String,
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -99,7 +111,7 @@ abstract class _$UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
           _UserModel value, $Res Function(_UserModel) then) =
       __$UserModelCopyWithImpl<$Res>;
   @override
-  $Res call({String uid, String? fcmToken, String username});
+  $Res call({String uid, String? fcmToken, String username, String email});
 }
 
 /// @nodoc
@@ -116,6 +128,7 @@ class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
     Object? uid = freezed,
     Object? fcmToken = freezed,
     Object? username = freezed,
+    Object? email = freezed,
   }) {
     return _then(_UserModel(
       uid: uid == freezed
@@ -130,6 +143,10 @@ class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String,
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -137,7 +154,11 @@ class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
-  _$_UserModel({required this.uid, this.fcmToken, required this.username});
+  _$_UserModel(
+      {required this.uid,
+      this.fcmToken,
+      required this.username,
+      required this.email});
 
   factory _$_UserModel.fromJson(Map<String, dynamic> json) =>
       _$$_UserModelFromJson(json);
@@ -154,10 +175,14 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
 
   /// Username of the user.
   final String username;
+  @override
+
+  /// Email of the user.
+  final String email;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UserModel(uid: $uid, fcmToken: $fcmToken, username: $username)';
+    return 'UserModel(uid: $uid, fcmToken: $fcmToken, username: $username, email: $email)';
   }
 
   @override
@@ -167,7 +192,8 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
       ..add(DiagnosticsProperty('type', 'UserModel'))
       ..add(DiagnosticsProperty('uid', uid))
       ..add(DiagnosticsProperty('fcmToken', fcmToken))
-      ..add(DiagnosticsProperty('username', username));
+      ..add(DiagnosticsProperty('username', username))
+      ..add(DiagnosticsProperty('email', email));
   }
 
   @override
@@ -179,11 +205,12 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
             (identical(other.fcmToken, fcmToken) ||
                 other.fcmToken == fcmToken) &&
             (identical(other.username, username) ||
-                other.username == username));
+                other.username == username) &&
+            (identical(other.email, email) || other.email == email));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, uid, fcmToken, username);
+  int get hashCode => Object.hash(runtimeType, uid, fcmToken, username, email);
 
   @JsonKey(ignore: true)
   @override
@@ -200,7 +227,8 @@ abstract class _UserModel implements UserModel {
   factory _UserModel(
       {required String uid,
       String? fcmToken,
-      required String username}) = _$_UserModel;
+      required String username,
+      required String email}) = _$_UserModel;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$_UserModel.fromJson;
@@ -217,6 +245,10 @@ abstract class _UserModel implements UserModel {
 
   /// Username of the user.
   String get username;
+  @override
+
+  /// Email of the user.
+  String get email;
   @override
   @JsonKey(ignore: true)
   _$UserModelCopyWith<_UserModel> get copyWith =>
