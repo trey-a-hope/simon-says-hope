@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:simon_says_hope/constants/globals.dart';
+import 'package:simon_says_hope/model/feeling_model.dart';
+import 'package:simon_says_hope/repositories/feeling_repository.dart';
+import 'package:simon_says_hope/services/modal_service.dart';
 
 part 'create_feeling_vm.dart';
 
 class CreateFeelingScreen extends StatelessWidget {
   CreateFeelingScreen({Key? key}) : super(key: key);
+
+  /// Modal Service instance.
+  final ModalService _modalService = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +43,17 @@ class CreateFeelingScreen extends StatelessWidget {
           ),
           floatingActionButton: model.currentStep == 3
               ? FloatingActionButton.extended(
-                  onPressed: () => model.submit(),
+                  onPressed: () async {
+                    /// Prompt user before submitting.
+                    final bool? confirm = await _modalService.showConfirmation(
+                        context: context,
+                        title: 'Submit Feeling For The Day',
+                        message: 'Are you sure?');
+
+                    if (confirm == null || !confirm) return;
+
+                    model.submit();
+                  },
                   label: Text('Done'),
                   icon: Icon(Icons.check),
                 )

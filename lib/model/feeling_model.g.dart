@@ -13,6 +13,7 @@ _$_FeelingModel _$$_FeelingModelFromJson(Map<String, dynamic> json) =>
       heartFeeling: json['heartFeeling'] as String,
       mindFeeling: json['mindFeeling'] as String,
       soulFeeling: json['soulFeeling'] as String,
+      created: DateTime.parse(json['created'] as String),
     );
 
 Map<String, dynamic> _$$_FeelingModelToJson(_$_FeelingModel instance) =>
@@ -22,4 +23,5 @@ Map<String, dynamic> _$$_FeelingModelToJson(_$_FeelingModel instance) =>
       'heartFeeling': instance.heartFeeling,
       'mindFeeling': instance.mindFeeling,
       'soulFeeling': instance.soulFeeling,
+      'created': instance.created.toIso8601String(),
     };

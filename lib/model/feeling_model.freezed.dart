@@ -26,13 +26,15 @@ class _$FeelingModelTearOff {
       String? id,
       required String heartFeeling,
       required String mindFeeling,
-      required String soulFeeling}) {
+      required String soulFeeling,
+      required DateTime created}) {
     return _FeelingModel(
       uid: uid,
       id: id,
       heartFeeling: heartFeeling,
       mindFeeling: mindFeeling,
       soulFeeling: soulFeeling,
+      created: created,
     );
   }
 
@@ -61,6 +63,9 @@ mixin _$FeelingModel {
   /// How does your soul feel?
   String get soulFeeling => throw _privateConstructorUsedError;
 
+  /// Time this was feeling was created.
+  DateTime get created => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $FeelingModelCopyWith<FeelingModel> get copyWith =>
@@ -77,7 +82,8 @@ abstract class $FeelingModelCopyWith<$Res> {
       String? id,
       String heartFeeling,
       String mindFeeling,
-      String soulFeeling});
+      String soulFeeling,
+      DateTime created});
 }
 
 /// @nodoc
@@ -95,6 +101,7 @@ class _$FeelingModelCopyWithImpl<$Res> implements $FeelingModelCopyWith<$Res> {
     Object? heartFeeling = freezed,
     Object? mindFeeling = freezed,
     Object? soulFeeling = freezed,
+    Object? created = freezed,
   }) {
     return _then(_value.copyWith(
       uid: uid == freezed
@@ -117,6 +124,10 @@ class _$FeelingModelCopyWithImpl<$Res> implements $FeelingModelCopyWith<$Res> {
           ? _value.soulFeeling
           : soulFeeling // ignore: cast_nullable_to_non_nullable
               as String,
+      created: created == freezed
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -133,7 +144,8 @@ abstract class _$FeelingModelCopyWith<$Res>
       String? id,
       String heartFeeling,
       String mindFeeling,
-      String soulFeeling});
+      String soulFeeling,
+      DateTime created});
 }
 
 /// @nodoc
@@ -153,6 +165,7 @@ class __$FeelingModelCopyWithImpl<$Res> extends _$FeelingModelCopyWithImpl<$Res>
     Object? heartFeeling = freezed,
     Object? mindFeeling = freezed,
     Object? soulFeeling = freezed,
+    Object? created = freezed,
   }) {
     return _then(_FeelingModel(
       uid: uid == freezed
@@ -175,6 +188,10 @@ class __$FeelingModelCopyWithImpl<$Res> extends _$FeelingModelCopyWithImpl<$Res>
           ? _value.soulFeeling
           : soulFeeling // ignore: cast_nullable_to_non_nullable
               as String,
+      created: created == freezed
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -187,7 +204,8 @@ class _$_FeelingModel with DiagnosticableTreeMixin implements _FeelingModel {
       this.id,
       required this.heartFeeling,
       required this.mindFeeling,
-      required this.soulFeeling});
+      required this.soulFeeling,
+      required this.created});
 
   factory _$_FeelingModel.fromJson(Map<String, dynamic> json) =>
       _$$_FeelingModelFromJson(json);
@@ -212,10 +230,14 @@ class _$_FeelingModel with DiagnosticableTreeMixin implements _FeelingModel {
 
   /// How does your soul feel?
   final String soulFeeling;
+  @override
+
+  /// Time this was feeling was created.
+  final DateTime created;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'FeelingModel(uid: $uid, id: $id, heartFeeling: $heartFeeling, mindFeeling: $mindFeeling, soulFeeling: $soulFeeling)';
+    return 'FeelingModel(uid: $uid, id: $id, heartFeeling: $heartFeeling, mindFeeling: $mindFeeling, soulFeeling: $soulFeeling, created: $created)';
   }
 
   @override
@@ -227,7 +249,8 @@ class _$_FeelingModel with DiagnosticableTreeMixin implements _FeelingModel {
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('heartFeeling', heartFeeling))
       ..add(DiagnosticsProperty('mindFeeling', mindFeeling))
-      ..add(DiagnosticsProperty('soulFeeling', soulFeeling));
+      ..add(DiagnosticsProperty('soulFeeling', soulFeeling))
+      ..add(DiagnosticsProperty('created', created));
   }
 
   @override
@@ -242,12 +265,13 @@ class _$_FeelingModel with DiagnosticableTreeMixin implements _FeelingModel {
             (identical(other.mindFeeling, mindFeeling) ||
                 other.mindFeeling == mindFeeling) &&
             (identical(other.soulFeeling, soulFeeling) ||
-                other.soulFeeling == soulFeeling));
+                other.soulFeeling == soulFeeling) &&
+            (identical(other.created, created) || other.created == created));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, uid, id, heartFeeling, mindFeeling, soulFeeling);
+  int get hashCode => Object.hash(
+      runtimeType, uid, id, heartFeeling, mindFeeling, soulFeeling, created);
 
   @JsonKey(ignore: true)
   @override
@@ -266,7 +290,8 @@ abstract class _FeelingModel implements FeelingModel {
       String? id,
       required String heartFeeling,
       required String mindFeeling,
-      required String soulFeeling}) = _$_FeelingModel;
+      required String soulFeeling,
+      required DateTime created}) = _$_FeelingModel;
 
   factory _FeelingModel.fromJson(Map<String, dynamic> json) =
       _$_FeelingModel.fromJson;
@@ -291,6 +316,10 @@ abstract class _FeelingModel implements FeelingModel {
 
   /// How does your soul feel?
   String get soulFeeling;
+  @override
+
+  /// Time this was feeling was created.
+  DateTime get created;
   @override
   @JsonKey(ignore: true)
   _$FeelingModelCopyWith<_FeelingModel> get copyWith =>

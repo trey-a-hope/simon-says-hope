@@ -11,7 +11,7 @@ class UserRepository extends GetxService {
   Future<void> createUser({required UserModel user}) async {
     try {
       // Create documentn via firestore service.
-      await _firestoreService.create(
+      await _firestoreService.createDocument(
           collection: 'users', data: user.toJson(), documentID: user.uid);
 
       return;

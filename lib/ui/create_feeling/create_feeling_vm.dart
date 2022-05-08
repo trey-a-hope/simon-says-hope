@@ -21,6 +21,12 @@ class _CreateFeelingViewModel extends GetxController {
 
   TextEditingController get soulController => _soulController;
 
+  /// Feelings Repository
+  final FeelingRepository _feelingRepository = Get.find();
+
+  /// Get storage instance.
+  GetStorage _getStorage = Get.find();
+
   @override
   void onInit() async {
     super.onInit();
@@ -44,7 +50,22 @@ class _CreateFeelingViewModel extends GetxController {
   }
 
   /// Submit form.
-  void submit() {
-    Get.toNamed(Globals.ROUTES_CREATE_FEELING_SUCCESS);
+  void submit() async {
+    try {
+      // Create feeling object.
+      final FeelingModel feeling = FeelingModel(
+        uid: _getStorage.read('uid'),
+        heartFeeling: _heartController.text,
+        mindFeeling: _mindController.text,
+        soulFeeling: _soulController.text,
+        created: DateTime.now(),
+      );
+
+      // Submit feeling to repository.
+      await _feelingRepository.createFeeling(feeling: feeling);
+
+      // Send user to success screen.
+      Get.toNamed(Globals.ROUTES_CREATE_FEELING_SUCCESS);
+    } catch (e) {}
   }
 }

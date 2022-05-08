@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:simon_says_hope/constants/globals.dart';
+import 'package:simon_says_hope/model/feeling_model.dart';
+import 'package:simon_says_hope/repositories/feeling_repository.dart';
 import 'package:simon_says_hope/ui/drawer/drawer_screen.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -16,7 +18,10 @@ class HomeScreen extends StatelessWidget {
       init: _HomeViewModel(),
       builder: (model) => Scaffold(
           floatingActionButton: FloatingActionButton(
-            onPressed: () => model.createFeeling(),
+            onPressed: () {
+              //TODO: Validate that the user has not submitted a feeling for today.
+              Get.toNamed(Globals.ROUTES_CREATE_FEELING);
+            },
             child: Icon(Icons.add),
           ),
           appBar: AppBar(

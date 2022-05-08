@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 
 part 'feeling_model.freezed.dart';
+
 part 'feeling_model.g.dart';
 
 @freezed
@@ -21,6 +22,9 @@ class FeelingModel with _$FeelingModel {
 
     /// How does your soul feel?
     required String soulFeeling,
+
+    /// Time this was feeling was created.
+    required DateTime created,
   }) = _FeelingModel;
 
   factory FeelingModel.fromJson(Map<String, dynamic> json) =>
