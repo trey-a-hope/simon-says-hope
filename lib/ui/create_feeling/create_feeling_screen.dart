@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:simon_says_hope/constants/globals.dart';
+import 'package:simon_says_hope/enums/feelings.dart';
 import 'package:simon_says_hope/model/feeling_model.dart';
 import 'package:simon_says_hope/repositories/feeling_repository.dart';
 import 'package:simon_says_hope/services/modal_service.dart';
@@ -19,20 +20,16 @@ class CreateFeelingScreen extends StatelessWidget {
     return GetBuilder<_CreateFeelingViewModel>(
       init: _CreateFeelingViewModel(),
       builder: (model) {
-        String title = '';
-        TextEditingController? controller;
+        TextEditingController controller;
 
-        switch (model.currentStep) {
-          case 1:
-            title = 'Heart';
+        switch (model.feeling) {
+          case Feelings.heart:
             controller = model.heartController;
             break;
-          case 2:
-            title = 'Mind';
+          case Feelings.mind:
             controller = model.mindController;
             break;
-          case 3:
-            title = 'Soul';
+          case Feelings.soul:
             controller = model.soulController;
             break;
         }
@@ -41,7 +38,7 @@ class CreateFeelingScreen extends StatelessWidget {
           appBar: AppBar(
             title: Text('Create Feeling'),
           ),
-          floatingActionButton: model.currentStep == 3
+          floatingActionButton: model.feeling == Feelings.soul
               ? FloatingActionButton.extended(
                   onPressed: () async {
                     /// Prompt user before submitting.
@@ -63,7 +60,7 @@ class CreateFeelingScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'How Does Your $title Feel?',
+                'How Does Your ${model.feeling.title} Feel?',
                 style: Theme.of(context).textTheme.headline4,
               ),
               Padding(
@@ -72,7 +69,7 @@ class CreateFeelingScreen extends StatelessWidget {
                   textCapitalization: TextCapitalization.sentences,
                   cursorColor: Theme.of(context).textTheme.headline4!.color,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  controller: controller!,
+                  controller: controller,
                   keyboardType: TextInputType.text,
                   textInputAction: TextInputAction.done,
                   // validator: _validationService.isEmpty,
@@ -97,14 +94,14 @@ class CreateFeelingScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  if (model.currentStep > 1) ...[
+                  if (model.feeling != Feelings.heart) ...[
                     ElevatedButton.icon(
                       onPressed: () => model.decrementStep(),
                       icon: Icon(Icons.navigate_before),
                       label: Text('Previous'),
                     )
                   ],
-                  if (model.currentStep < 3) ...[
+                  if (model.feeling != Feelings.soul) ...[
                     ElevatedButton.icon(
                       onPressed: () => model.incrementStep(),
                       icon: Icon(Icons.navigate_next),
