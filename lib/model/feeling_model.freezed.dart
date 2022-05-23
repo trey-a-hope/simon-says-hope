@@ -24,16 +24,16 @@ class _$FeelingModelTearOff {
   _FeelingModel call(
       {required String uid,
       String? id,
-      required String heartFeeling,
-      required String mindFeeling,
-      required String soulFeeling,
+      required String heart,
+      required String mind,
+      required String soul,
       required DateTime created}) {
     return _FeelingModel(
       uid: uid,
       id: id,
-      heartFeeling: heartFeeling,
-      mindFeeling: mindFeeling,
-      soulFeeling: soulFeeling,
+      heart: heart,
+      mind: mind,
+      soul: soul,
       created: created,
     );
   }
@@ -55,13 +55,13 @@ mixin _$FeelingModel {
   String? get id => throw _privateConstructorUsedError;
 
   /// How does your heart feel?
-  String get heartFeeling => throw _privateConstructorUsedError;
+  String get heart => throw _privateConstructorUsedError;
 
   /// How does your mind feel?
-  String get mindFeeling => throw _privateConstructorUsedError;
+  String get mind => throw _privateConstructorUsedError;
 
   /// How does your soul feel?
-  String get soulFeeling => throw _privateConstructorUsedError;
+  String get soul => throw _privateConstructorUsedError;
 
   /// Time this was feeling was created.
   DateTime get created => throw _privateConstructorUsedError;
@@ -80,9 +80,9 @@ abstract class $FeelingModelCopyWith<$Res> {
   $Res call(
       {String uid,
       String? id,
-      String heartFeeling,
-      String mindFeeling,
-      String soulFeeling,
+      String heart,
+      String mind,
+      String soul,
       DateTime created});
 }
 
@@ -98,9 +98,9 @@ class _$FeelingModelCopyWithImpl<$Res> implements $FeelingModelCopyWith<$Res> {
   $Res call({
     Object? uid = freezed,
     Object? id = freezed,
-    Object? heartFeeling = freezed,
-    Object? mindFeeling = freezed,
-    Object? soulFeeling = freezed,
+    Object? heart = freezed,
+    Object? mind = freezed,
+    Object? soul = freezed,
     Object? created = freezed,
   }) {
     return _then(_value.copyWith(
@@ -112,17 +112,17 @@ class _$FeelingModelCopyWithImpl<$Res> implements $FeelingModelCopyWith<$Res> {
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      heartFeeling: heartFeeling == freezed
-          ? _value.heartFeeling
-          : heartFeeling // ignore: cast_nullable_to_non_nullable
+      heart: heart == freezed
+          ? _value.heart
+          : heart // ignore: cast_nullable_to_non_nullable
               as String,
-      mindFeeling: mindFeeling == freezed
-          ? _value.mindFeeling
-          : mindFeeling // ignore: cast_nullable_to_non_nullable
+      mind: mind == freezed
+          ? _value.mind
+          : mind // ignore: cast_nullable_to_non_nullable
               as String,
-      soulFeeling: soulFeeling == freezed
-          ? _value.soulFeeling
-          : soulFeeling // ignore: cast_nullable_to_non_nullable
+      soul: soul == freezed
+          ? _value.soul
+          : soul // ignore: cast_nullable_to_non_nullable
               as String,
       created: created == freezed
           ? _value.created
@@ -142,9 +142,9 @@ abstract class _$FeelingModelCopyWith<$Res>
   $Res call(
       {String uid,
       String? id,
-      String heartFeeling,
-      String mindFeeling,
-      String soulFeeling,
+      String heart,
+      String mind,
+      String soul,
       DateTime created});
 }
 
@@ -162,9 +162,9 @@ class __$FeelingModelCopyWithImpl<$Res> extends _$FeelingModelCopyWithImpl<$Res>
   $Res call({
     Object? uid = freezed,
     Object? id = freezed,
-    Object? heartFeeling = freezed,
-    Object? mindFeeling = freezed,
-    Object? soulFeeling = freezed,
+    Object? heart = freezed,
+    Object? mind = freezed,
+    Object? soul = freezed,
     Object? created = freezed,
   }) {
     return _then(_FeelingModel(
@@ -176,17 +176,17 @@ class __$FeelingModelCopyWithImpl<$Res> extends _$FeelingModelCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      heartFeeling: heartFeeling == freezed
-          ? _value.heartFeeling
-          : heartFeeling // ignore: cast_nullable_to_non_nullable
+      heart: heart == freezed
+          ? _value.heart
+          : heart // ignore: cast_nullable_to_non_nullable
               as String,
-      mindFeeling: mindFeeling == freezed
-          ? _value.mindFeeling
-          : mindFeeling // ignore: cast_nullable_to_non_nullable
+      mind: mind == freezed
+          ? _value.mind
+          : mind // ignore: cast_nullable_to_non_nullable
               as String,
-      soulFeeling: soulFeeling == freezed
-          ? _value.soulFeeling
-          : soulFeeling // ignore: cast_nullable_to_non_nullable
+      soul: soul == freezed
+          ? _value.soul
+          : soul // ignore: cast_nullable_to_non_nullable
               as String,
       created: created == freezed
           ? _value.created
@@ -202,9 +202,9 @@ class _$_FeelingModel with DiagnosticableTreeMixin implements _FeelingModel {
   _$_FeelingModel(
       {required this.uid,
       this.id,
-      required this.heartFeeling,
-      required this.mindFeeling,
-      required this.soulFeeling,
+      required this.heart,
+      required this.mind,
+      required this.soul,
       required this.created});
 
   factory _$_FeelingModel.fromJson(Map<String, dynamic> json) =>
@@ -221,15 +221,15 @@ class _$_FeelingModel with DiagnosticableTreeMixin implements _FeelingModel {
   @override
 
   /// How does your heart feel?
-  final String heartFeeling;
+  final String heart;
   @override
 
   /// How does your mind feel?
-  final String mindFeeling;
+  final String mind;
   @override
 
   /// How does your soul feel?
-  final String soulFeeling;
+  final String soul;
   @override
 
   /// Time this was feeling was created.
@@ -237,7 +237,7 @@ class _$_FeelingModel with DiagnosticableTreeMixin implements _FeelingModel {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'FeelingModel(uid: $uid, id: $id, heartFeeling: $heartFeeling, mindFeeling: $mindFeeling, soulFeeling: $soulFeeling, created: $created)';
+    return 'FeelingModel(uid: $uid, id: $id, heart: $heart, mind: $mind, soul: $soul, created: $created)';
   }
 
   @override
@@ -247,9 +247,9 @@ class _$_FeelingModel with DiagnosticableTreeMixin implements _FeelingModel {
       ..add(DiagnosticsProperty('type', 'FeelingModel'))
       ..add(DiagnosticsProperty('uid', uid))
       ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('heartFeeling', heartFeeling))
-      ..add(DiagnosticsProperty('mindFeeling', mindFeeling))
-      ..add(DiagnosticsProperty('soulFeeling', soulFeeling))
+      ..add(DiagnosticsProperty('heart', heart))
+      ..add(DiagnosticsProperty('mind', mind))
+      ..add(DiagnosticsProperty('soul', soul))
       ..add(DiagnosticsProperty('created', created));
   }
 
@@ -260,18 +260,15 @@ class _$_FeelingModel with DiagnosticableTreeMixin implements _FeelingModel {
             other is _FeelingModel &&
             (identical(other.uid, uid) || other.uid == uid) &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.heartFeeling, heartFeeling) ||
-                other.heartFeeling == heartFeeling) &&
-            (identical(other.mindFeeling, mindFeeling) ||
-                other.mindFeeling == mindFeeling) &&
-            (identical(other.soulFeeling, soulFeeling) ||
-                other.soulFeeling == soulFeeling) &&
+            (identical(other.heart, heart) || other.heart == heart) &&
+            (identical(other.mind, mind) || other.mind == mind) &&
+            (identical(other.soul, soul) || other.soul == soul) &&
             (identical(other.created, created) || other.created == created));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, uid, id, heartFeeling, mindFeeling, soulFeeling, created);
+  int get hashCode =>
+      Object.hash(runtimeType, uid, id, heart, mind, soul, created);
 
   @JsonKey(ignore: true)
   @override
@@ -288,9 +285,9 @@ abstract class _FeelingModel implements FeelingModel {
   factory _FeelingModel(
       {required String uid,
       String? id,
-      required String heartFeeling,
-      required String mindFeeling,
-      required String soulFeeling,
+      required String heart,
+      required String mind,
+      required String soul,
       required DateTime created}) = _$_FeelingModel;
 
   factory _FeelingModel.fromJson(Map<String, dynamic> json) =
@@ -307,15 +304,15 @@ abstract class _FeelingModel implements FeelingModel {
   @override
 
   /// How does your heart feel?
-  String get heartFeeling;
+  String get heart;
   @override
 
   /// How does your mind feel?
-  String get mindFeeling;
+  String get mind;
   @override
 
   /// How does your soul feel?
-  String get soulFeeling;
+  String get soul;
   @override
 
   /// Time this was feeling was created.

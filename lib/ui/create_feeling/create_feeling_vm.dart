@@ -55,9 +55,9 @@ class _CreateFeelingViewModel extends GetxController {
       // Create feeling object.
       final FeelingModel feeling = FeelingModel(
         uid: _getStorage.read('uid'),
-        heartFeeling: _heartController.text,
-        mindFeeling: _mindController.text,
-        soulFeeling: _soulController.text,
+        heart: _heartController.text,
+        mind: _mindController.text,
+        soul: _soulController.text,
         created: DateTime.now(),
       );
 

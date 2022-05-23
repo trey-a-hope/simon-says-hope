@@ -15,13 +15,13 @@ class FeelingModel with _$FeelingModel {
     String? id,
 
     /// How does your heart feel?
-    required String heartFeeling,
+    required String heart,
 
     /// How does your mind feel?
-    required String mindFeeling,
+    required String mind,
 
     /// How does your soul feel?
-    required String soulFeeling,
+    required String soul,
 
     /// Time this was feeling was created.
     required DateTime created,
