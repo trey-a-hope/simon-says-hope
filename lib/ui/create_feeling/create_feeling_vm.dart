@@ -1,10 +1,9 @@
 part of 'create_feeling_screen.dart';
 
 class _CreateFeelingViewModel extends GetxController {
-  /// Current step in the form.
-  int _currentStep = 1;
+  Feelings _feeling = Feelings.heart;
 
-  int get currentStep => _currentStep;
+  Feelings get feeling => _feeling;
 
   /// Text editing controller for how your heart feels.
   final TextEditingController _heartController = TextEditingController();
@@ -39,14 +38,12 @@ class _CreateFeelingViewModel extends GetxController {
 
   /// Increment step.
   void incrementStep() {
-    _currentStep++;
-    update();
+    _feeling = Feelings.values[_feeling.index + 1];
   }
 
   /// Decrement step.
   void decrementStep() {
-    _currentStep--;
-    update();
+    _feeling = Feelings.values[_feeling.index - 1];
   }
 
   /// Submit form.
