@@ -1,7 +1,31 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
+import 'package:simon_says_hope/model/feeling_model.dart';
+import 'package:simon_says_hope/model/user_model.dart';
 
 class FirestoreService extends GetxService {
+  /// Instance of FirebaseFirestore
+  static FirebaseFirestore instance = FirebaseFirestore.instance;
+
+  /// The 'feelings' collection table.
+  final CollectionReference _feelingsCollection =
+      instance.collection('feelings');
+
+  /// The 'users' collection table.
+  final CollectionReference _usersCollection = instance.collection('user');
+
+  /// Returns a collection reference specified the collection title.
+  CollectionReference? _collectionReference({required String collection}) {
+    switch (collection) {
+      case 'feelings':
+        return _feelingsCollection;
+      case 'users':
+        return _usersCollection;
+      default:
+        return null;
+    }
+  }
+
   /// Create document.
   Future<void> createDocument({
     required String collection,
@@ -9,17 +33,14 @@ class FirestoreService extends GetxService {
     String? documentID,
   }) async {
     try {
-      // Create collection reference.
-      CollectionReference collectionReference =
-          FirebaseFirestore.instance.collection(collection);
-
       // Create document reference.
       DocumentReference documentReference;
       if (documentID == null) {
-        documentReference = collectionReference.doc();
+        documentReference = _collectionReference(collection: collection)!.doc();
         data['id'] = documentReference.id;
       } else {
-        documentReference = collectionReference.doc(documentID);
+        documentReference =
+            _collectionReference(collection: collection)!.doc(documentID);
       }
 
       // Assign doc ref with user data.
@@ -33,64 +54,35 @@ class FirestoreService extends GetxService {
     }
   }
 
-  /// Retrieve documents between range.
-  Future<List<QueryDocumentSnapshot<Object?>>>
-      retrieveDocumentsBetweenDateRange({
+  /// Retrieve documents.
+  Future<List<QueryDocumentSnapshot>?> retrieveDocuments({
     required String collection,
-    required String key1,
-    required DateTime val1,
-    required String key2,
-    required DateTime val2,
   }) async {
     try {
-      // Create collection reference.
-      CollectionReference collectionReference =
-          FirebaseFirestore.instance.collection(collection);
-
-      Query query = collectionReference
-          // .where('$key1', isGreaterThanOrEqualTo: val1)
-          .where('$key2', isLessThan: val2);
-
-      List<QueryDocumentSnapshot<Object?>> queryDocumentSnapshots =
-          (await query.get()).docs.toList();
-
-      return queryDocumentSnapshots;
+      switch (collection) {
+        case 'feelings':
+          return (await _feelingsCollection
+                  .withConverter<FeelingModel>(
+                      fromFirestore: (snapshot, _) =>
+                          FeelingModel.fromJson(snapshot.data()!),
+                      toFirestore: (model, _) => model.toJson())
+                  .get())
+              .docs;
+        case 'users':
+          return (await _usersCollection
+                  .withConverter<UserModel>(
+                      fromFirestore: (snapshot, _) =>
+                          UserModel.fromJson(snapshot.data()!),
+                      toFirestore: (model, _) => model.toJson())
+                  .get())
+              .docs;
+        default:
+          return null;
+      }
     } catch (e) {
       throw Exception(
         e.toString(),
       );
     }
   }
-
-// /// Retrieve a user.
-// Future<UserModel> retrieveUser({required String uid}) async {
-//   try {
-//     final DocumentReference model = await _usersDB
-//         .doc(uid)
-//         .withConverter<UserModel>(
-//         fromFirestore: (snapshot, _) =>
-//             UserModel.fromJson(snapshot.data()!),
-//         toFirestore: (model, _) => model.toJson());
-//
-//     return (await model.get()).data() as UserModel;
-//   } catch (e) {
-//     throw Exception(e.toString());
-//   }
-// }
-//
-// /// Update a user.
-// Future<void> updateUser({
-//   required String uid,
-//   required Map<String, dynamic> data,
-// }) async {
-//   try {
-//     data['modified'] = DateTime.now().toUtc();
-//     await _usersDB.doc(uid).update(data);
-//     return;
-//   } catch (e) {
-//     throw Exception(
-//       e.toString(),
-//     );
-//   }
-// }
 }

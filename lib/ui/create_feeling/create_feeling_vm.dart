@@ -39,11 +39,13 @@ class _CreateFeelingViewModel extends GetxController {
   /// Increment step.
   void incrementStep() {
     _feeling = Feelings.values[_feeling.index + 1];
+    update();
   }
 
   /// Decrement step.
   void decrementStep() {
     _feeling = Feelings.values[_feeling.index - 1];
+    update();
   }
 
   /// Submit form.

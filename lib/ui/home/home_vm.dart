@@ -12,7 +12,7 @@ class _HomeViewModel extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-    _getFeelings();
+    _retrieveFeelings();
   }
 
   @override
@@ -20,16 +20,16 @@ class _HomeViewModel extends GetxController {
     super.onClose();
   }
 
-  void _getFeelings() async {
+  void _retrieveFeelings() async {
     try {
-      _feelings = await _feelingRepository.getFeelingsForMonth(
-        date: DateTime.now(),
-      );
-
-      print(_feelings);
+      _feelings = await _feelingRepository.retrieveFeelings();
       update();
     } catch (e) {
-      print('$e');
+      print(e);
     }
+  }
+
+  void refresh() async {
+    _retrieveFeelings();
   }
 }

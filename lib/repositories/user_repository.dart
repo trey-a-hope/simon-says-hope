@@ -4,6 +4,9 @@ import 'package:simon_says_hope/model/user_model.dart';
 import '../services/firestore_service.dart';
 
 class UserRepository extends GetxService {
+  /// Collection title, 'users'.
+  final String _collection = 'users';
+
   /// Firestore service.
   final FirestoreService _firestoreService = Get.find();
 
@@ -12,7 +15,7 @@ class UserRepository extends GetxService {
     try {
       // Create documentn via firestore service.
       await _firestoreService.createDocument(
-          collection: 'users', data: user.toJson(), documentID: user.uid);
+        collection: _collection, data: user.toJson(), documentID: user.uid,);
 
       return;
     } catch (e) {
