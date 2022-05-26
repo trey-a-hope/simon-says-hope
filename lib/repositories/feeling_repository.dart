@@ -29,7 +29,6 @@ class FeelingRepository extends GetxService {
   }
 
   /// Return all feelings.
-
   Future<List<FeelingModel>> retrieveFeelings() async {
     try {
       List<FeelingModel> feelings =

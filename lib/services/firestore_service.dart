@@ -12,7 +12,7 @@ class FirestoreService extends GetxService {
       instance.collection('feelings');
 
   /// The 'users' collection table.
-  final CollectionReference _usersCollection = instance.collection('user');
+  final CollectionReference _usersCollection = instance.collection('users');
 
   /// Returns a collection reference specified the collection title.
   CollectionReference? _collectionReference({required String collection}) {

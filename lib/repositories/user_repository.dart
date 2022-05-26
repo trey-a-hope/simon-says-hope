@@ -15,7 +15,10 @@ class UserRepository extends GetxService {
     try {
       // Create documentn via firestore service.
       await _firestoreService.createDocument(
-        collection: _collection, data: user.toJson(), documentID: user.uid,);
+        collection: _collection,
+        data: user.toJson(),
+        documentID: user.uid,
+      );
 
       return;
     } catch (e) {
@@ -25,35 +28,19 @@ class UserRepository extends GetxService {
     }
   }
 
-// /// Retrieve a user.
-// Future<UserModel> retrieveUser({required String uid}) async {
-//   try {
-//     final DocumentReference model = await _usersDB
-//         .doc(uid)
-//         .withConverter<UserModel>(
-//         fromFirestore: (snapshot, _) =>
-//             UserModel.fromJson(snapshot.data()!),
-//         toFirestore: (model, _) => model.toJson());
-//
-//     return (await model.get()).data() as UserModel;
-//   } catch (e) {
-//     throw Exception(e.toString());
-//   }
-// }
-//
-// /// Update a user.
-// Future<void> updateUser({
-//   required String uid,
-//   required Map<String, dynamic> data,
-// }) async {
-//   try {
-//     data['modified'] = DateTime.now().toUtc();
-//     await _usersDB.doc(uid).update(data);
-//     return;
-//   } catch (e) {
-//     throw Exception(
-//       e.toString(),
-//     );
-//   }
-// }
+  /// Return all users.
+  Future<List<UserModel>> retrieveUsers() async {
+    try {
+      List<UserModel> users =
+          (await _firestoreService.retrieveDocuments(collection: _collection))!
+              .map((e) => e.data() as UserModel)
+              .toList();
+
+      return users;
+    } catch (e) {
+      throw Exception(
+        e.toString(),
+      );
+    }
+  }
 }
