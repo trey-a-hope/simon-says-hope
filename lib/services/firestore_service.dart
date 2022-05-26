@@ -66,6 +66,7 @@ class FirestoreService extends GetxService {
                       fromFirestore: (snapshot, _) =>
                           FeelingModel.fromJson(snapshot.data()!),
                       toFirestore: (model, _) => model.toJson())
+                  .orderBy('created', descending: true)
                   .get())
               .docs;
         case 'users':
