@@ -43,7 +43,7 @@ class HomeScreen extends StatelessWidget {
           },
         ),
         child: model.feelings == null
-            ? CircularProgressIndicator()
+            ? Center(child: CircularProgressIndicator())
             : ListView.builder(
                 itemCount: model.feelings!.length,
                 itemBuilder: (context, index) => FeelingListTileWidget(

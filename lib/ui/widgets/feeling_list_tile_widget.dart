@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:simon_says_hope/model/feeling_model.dart';
 import 'package:simon_says_hope/model/user_model.dart';
+import 'package:simon_says_hope/ui/widgets/full_width_button_widget.dart';
 
 class FeelingListTileWidget extends StatelessWidget {
   FeelingListTileWidget({
@@ -24,19 +25,19 @@ class FeelingListTileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      leading: Icon(
+        Icons.book,
+        color: Colors.red,
+      ),
       title: Text(
         '${user.username}\'s feeling for ${DateFormat('MMM dd, yyyy').format(feeling.created)}',
       ),
       trailing: Icon(Icons.chevron_right),
       onTap: () => Get.bottomSheet(
         BottomSheet(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30),
-          ),
-          elevation: 10,
           onClosing: () => {},
           builder: (_) => Padding(
-            padding: EdgeInsets.all(30),
+            padding: EdgeInsets.fromLTRB(30, 60, 30, 30),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -45,7 +46,7 @@ class FeelingListTileWidget extends StatelessWidget {
                   children: [
                     Text(user.username, style: _headerTextStyle),
                     Text(
-                      ' ${DateFormat('EEE, MMM d, yyyy').format(feeling.created)}',
+                      ' ${DateFormat('EEE, MMM d, yyyy @ h:mm a').format(feeling.created)}',
                       style: _headerTextStyle,
                     ),
                   ],
@@ -68,10 +69,18 @@ class FeelingListTileWidget extends StatelessWidget {
                   '\"${feeling.soul}\"',
                   style: _textStyle,
                 ),
+                Spacer(),
+                FullWidthButtonWidget(
+                  text: 'OK',
+                  buttonColor: Colors.blue,
+                  onPressed: () => Get.back(),
+                ),
               ],
             ),
           ),
         ),
+        isScrollControlled: true,
+        isDismissible: false,
       ),
     );
   }
