@@ -6,11 +6,15 @@ import 'package:simon_says_hope/enums/feelings.dart';
 import 'package:simon_says_hope/model/feeling_model.dart';
 import 'package:simon_says_hope/repositories/feeling_repository.dart';
 import 'package:simon_says_hope/services/modal_service.dart';
+import 'package:simon_says_hope/ui/widgets/basic_page_widget.dart';
 
 part 'create_feeling_vm.dart';
 
 class CreateFeelingScreen extends StatelessWidget {
   CreateFeelingScreen({Key? key}) : super(key: key);
+
+  /// Key that holds the current state of the scaffold.
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   /// Modal Service instance.
   final ModalService _modalService = Get.find();
@@ -34,10 +38,9 @@ class CreateFeelingScreen extends StatelessWidget {
             break;
         }
 
-        return Scaffold(
-          appBar: AppBar(
-            title: Text('Create Feeling'),
-          ),
+        return BasicPageWidget(
+          scaffoldKey: _scaffoldKey,
+          title: 'Create Feeling',
           floatingActionButton: model.feeling == Feelings.soul
               ? FloatingActionButton.extended(
                   onPressed: () async {
@@ -51,11 +54,18 @@ class CreateFeelingScreen extends StatelessWidget {
 
                     model.submit();
                   },
+                  backgroundColor: Colors.green,
                   label: Text('Done'),
                   icon: Icon(Icons.check),
                 )
               : null,
-          body: Column(
+          leftIconButton: IconButton(
+            icon: const Icon(Icons.chevron_left),
+            onPressed: () {
+              Get.back();
+            },
+          ),
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
