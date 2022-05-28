@@ -5,6 +5,7 @@ class Globals {
   static const String ROUTES_HOME = '/home';
   static const String ROUTES_SIGNUP = '/signup';
   static const String ROUTES_LOGIN = '/login';
+  static const String ROUTES_PROFILE = '/profile';
   static const String ROUTES_MAIN = '/main';
   static const String ROUTES_CREATE_FEELING = '/create_feeling';
   static const String ROUTES_CREATE_FEELING_SUCCESS = '/create_feeling_success';

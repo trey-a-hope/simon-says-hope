@@ -54,6 +54,16 @@ class DrawerScreen extends StatelessWidget {
                   Get.offNamed(Globals.ROUTES_HOME);
                 },
               ),
+              ListTile(
+                leading: const Icon(Icons.person),
+                title: Text(
+                  'Profile',
+                  style: context.textTheme.headline4,
+                ),
+                onTap: () {
+                  Get.offNamed(Globals.ROUTES_PROFILE);
+                },
+              ),
               Spacer(),
               ListTile(
                 leading: const Icon(Icons.settings),
