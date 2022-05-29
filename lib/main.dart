@@ -50,11 +50,15 @@ class MyApp extends StatelessWidget with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.resumed) {
-      //TODO:
-      // locator<UtilService>().setOnlineStatus(isOnline: true);
-    } else {
-      // locator<UtilService>().setOnlineStatus(isOnline: false);
+    switch (state) {
+      case AppLifecycleState.resumed:
+        break;
+      case AppLifecycleState.inactive:
+        break;
+      case AppLifecycleState.paused:
+        break;
+      case AppLifecycleState.detached:
+        break;
     }
   }
 
