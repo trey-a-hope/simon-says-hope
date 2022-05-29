@@ -25,12 +25,16 @@ class _$UserModelTearOff {
       {required String uid,
       String? fcmToken,
       required String username,
-      required String email}) {
+      required String email,
+      required String color,
+      String? imgUrl}) {
     return _UserModel(
       uid: uid,
       fcmToken: fcmToken,
       username: username,
       email: email,
+      color: color,
+      imgUrl: imgUrl,
     );
   }
 
@@ -56,6 +60,12 @@ mixin _$UserModel {
   /// Email of the user.
   String get email => throw _privateConstructorUsedError;
 
+  /// User color.
+  String get color => throw _privateConstructorUsedError;
+
+  /// Image url.
+  String? get imgUrl => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $UserModelCopyWith<UserModel> get copyWith =>
@@ -66,7 +76,13 @@ mixin _$UserModel {
 abstract class $UserModelCopyWith<$Res> {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
       _$UserModelCopyWithImpl<$Res>;
-  $Res call({String uid, String? fcmToken, String username, String email});
+  $Res call(
+      {String uid,
+      String? fcmToken,
+      String username,
+      String email,
+      String color,
+      String? imgUrl});
 }
 
 /// @nodoc
@@ -83,6 +99,8 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
     Object? fcmToken = freezed,
     Object? username = freezed,
     Object? email = freezed,
+    Object? color = freezed,
+    Object? imgUrl = freezed,
   }) {
     return _then(_value.copyWith(
       uid: uid == freezed
@@ -101,6 +119,14 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      color: color == freezed
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as String,
+      imgUrl: imgUrl == freezed
+          ? _value.imgUrl
+          : imgUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -111,7 +137,13 @@ abstract class _$UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
           _UserModel value, $Res Function(_UserModel) then) =
       __$UserModelCopyWithImpl<$Res>;
   @override
-  $Res call({String uid, String? fcmToken, String username, String email});
+  $Res call(
+      {String uid,
+      String? fcmToken,
+      String username,
+      String email,
+      String color,
+      String? imgUrl});
 }
 
 /// @nodoc
@@ -129,6 +161,8 @@ class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
     Object? fcmToken = freezed,
     Object? username = freezed,
     Object? email = freezed,
+    Object? color = freezed,
+    Object? imgUrl = freezed,
   }) {
     return _then(_UserModel(
       uid: uid == freezed
@@ -147,6 +181,14 @@ class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      color: color == freezed
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as String,
+      imgUrl: imgUrl == freezed
+          ? _value.imgUrl
+          : imgUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -158,7 +200,9 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
       {required this.uid,
       this.fcmToken,
       required this.username,
-      required this.email});
+      required this.email,
+      required this.color,
+      this.imgUrl});
 
   factory _$_UserModel.fromJson(Map<String, dynamic> json) =>
       _$$_UserModelFromJson(json);
@@ -179,10 +223,18 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
 
   /// Email of the user.
   final String email;
+  @override
+
+  /// User color.
+  final String color;
+  @override
+
+  /// Image url.
+  final String? imgUrl;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UserModel(uid: $uid, fcmToken: $fcmToken, username: $username, email: $email)';
+    return 'UserModel(uid: $uid, fcmToken: $fcmToken, username: $username, email: $email, color: $color, imgUrl: $imgUrl)';
   }
 
   @override
@@ -193,7 +245,9 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
       ..add(DiagnosticsProperty('uid', uid))
       ..add(DiagnosticsProperty('fcmToken', fcmToken))
       ..add(DiagnosticsProperty('username', username))
-      ..add(DiagnosticsProperty('email', email));
+      ..add(DiagnosticsProperty('email', email))
+      ..add(DiagnosticsProperty('color', color))
+      ..add(DiagnosticsProperty('imgUrl', imgUrl));
   }
 
   @override
@@ -206,11 +260,14 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
                 other.fcmToken == fcmToken) &&
             (identical(other.username, username) ||
                 other.username == username) &&
-            (identical(other.email, email) || other.email == email));
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.color, color) || other.color == color) &&
+            (identical(other.imgUrl, imgUrl) || other.imgUrl == imgUrl));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, uid, fcmToken, username, email);
+  int get hashCode =>
+      Object.hash(runtimeType, uid, fcmToken, username, email, color, imgUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -228,7 +285,9 @@ abstract class _UserModel implements UserModel {
       {required String uid,
       String? fcmToken,
       required String username,
-      required String email}) = _$_UserModel;
+      required String email,
+      required String color,
+      String? imgUrl}) = _$_UserModel;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$_UserModel.fromJson;
@@ -249,6 +308,14 @@ abstract class _UserModel implements UserModel {
 
   /// Email of the user.
   String get email;
+  @override
+
+  /// User color.
+  String get color;
+  @override
+
+  /// Image url.
+  String? get imgUrl;
   @override
   @JsonKey(ignore: true)
   _$UserModelCopyWith<_UserModel> get copyWith =>

@@ -11,6 +11,8 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
       fcmToken: json['fcmToken'] as String?,
       username: json['username'] as String,
       email: json['email'] as String,
+      color: json['color'] as String,
+      imgUrl: json['imgUrl'] as String?,
     );
 
 Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
@@ -19,4 +21,6 @@ Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
       'fcmToken': instance.fcmToken,
       'username': instance.username,
       'email': instance.email,
+      'color': instance.color,
+      'imgUrl': instance.imgUrl,
     };

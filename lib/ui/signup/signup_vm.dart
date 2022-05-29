@@ -50,6 +50,7 @@ class _SignupViewModel extends GetxController {
         uid: userCredential.user!.uid,
         username: _usernameController.text,
         email: _emailController.text,
+        color: 'FFFFFF',
       );
 
       // Create user in Firestore database.

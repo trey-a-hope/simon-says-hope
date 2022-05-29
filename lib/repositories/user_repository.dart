@@ -28,6 +28,40 @@ class UserRepository extends GetxService {
     }
   }
 
+  /// Update a user.
+  Future<void> updateUser(
+      {required String uid, required Map<String, dynamic> data}) async {
+    try {
+      // Update document via firestore service.
+      await _firestoreService.updateDocument(
+        collection: _collection,
+        data: data,
+        documentID: uid,
+      );
+
+      return;
+    } catch (e) {
+      throw Exception(
+        e.toString(),
+      );
+    }
+  }
+
+  /// Return a user.
+  Future<UserModel> retrieveUser({required String uid}) async {
+    try {
+      UserModel user = (await _firestoreService.retrieveDocument(
+              collection: _collection, documentId: uid))!
+          .data() as UserModel;
+
+      return user;
+    } catch (e) {
+      throw Exception(
+        e.toString(),
+      );
+    }
+  }
+
   /// Return all users.
   Future<List<UserModel>> retrieveUsers() async {
     try {

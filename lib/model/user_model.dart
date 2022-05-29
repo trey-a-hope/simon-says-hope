@@ -19,6 +19,12 @@ class UserModel with _$UserModel {
 
     /// Email of the user.
     required String email,
+
+    /// User color.
+    required String color,
+
+    /// Image url.
+    String? imgUrl,
   }) = _UserModel;
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>
