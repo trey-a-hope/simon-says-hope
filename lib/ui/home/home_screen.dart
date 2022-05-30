@@ -5,6 +5,7 @@ import 'package:simon_says_hope/model/feeling_model.dart';
 import 'package:simon_says_hope/model/user_model.dart';
 import 'package:simon_says_hope/repositories/feeling_repository.dart';
 import 'package:simon_says_hope/repositories/user_repository.dart';
+import 'package:simon_says_hope/services/auth_service.dart';
 import 'package:simon_says_hope/ui/drawer/drawer_screen.dart';
 import 'package:simon_says_hope/ui/widgets/basic_page_widget.dart';
 import 'package:simon_says_hope/ui/widgets/feeling_list_tile_widget.dart';
@@ -27,7 +28,15 @@ class HomeScreen extends StatelessWidget {
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             //TODO: Validate that the user has not submitted a feeling for today.
-            Get.toNamed(Globals.ROUTES_CREATE_FEELING);
+            Get.toNamed(
+              Globals.ROUTES_CREATE_FEELING,
+              arguments: {
+                'partnerUser': model.users!.firstWhere(
+                  (u) => u.uid != model.currentUser.uid,
+                ),
+                'currentUser': model.currentUser,
+              },
+            );
           },
           child: Icon(Icons.add),
         ),

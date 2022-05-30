@@ -1,5 +1,7 @@
 import 'package:get/get_state_manager/get_state_manager.dart';
 
+import '../constants/globals.dart';
+
 class ValidationService extends GetxService {
   String? isEmpty(String? value) {
     if (value == null || value.length == 0) {
@@ -7,6 +9,14 @@ class ValidationService extends GetxService {
     } else {
       return null;
     }
+  }
+
+  String? minChars(String? value) {
+    return (value == null || value
+        .replaceAll(' ', '')
+        .length < Globals.CREATE_FEELING_CHAR_LIMIT)
+        ? 'Must enter at least ${Globals.CREATE_FEELING_CHAR_LIMIT} characters.'
+        : null;
   }
 
   String? mobile(String? value) {

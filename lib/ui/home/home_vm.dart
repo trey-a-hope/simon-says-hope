@@ -7,6 +7,9 @@ class _HomeViewModel extends GetxController {
   /// Users Repository.
   final UserRepository _userRepository = Get.find();
 
+  /// Auth Service.
+  final AuthService _authService = Get.find();
+
   /// List of feelings.
   List<FeelingModel>? _feelings;
 
@@ -15,6 +18,10 @@ class _HomeViewModel extends GetxController {
   /// List of users, Simone and Trey.
   List<UserModel>? _users;
   List<UserModel>? get users => _users;
+
+  /// Current user of the app.
+  late UserModel _currentUser;
+  UserModel get currentUser => _currentUser;
 
   @override
   void onInit() async {
@@ -30,6 +37,9 @@ class _HomeViewModel extends GetxController {
   /// Load the page.
   void load() async {
     try {
+      // Fetch current user of the app.
+      _currentUser = await _authService.getCurrentUser();
+
       // Fetch the two users of the app.
       _users = await _userRepository.retrieveUsers();
 

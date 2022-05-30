@@ -71,7 +71,7 @@ class FCMService extends GetxService {
     required String fcmToken,
     required String title,
     required String body,
-    required NotificationData? notificationData,
+    NotificationData? notificationData,
   }) {
     return _sendNotification(fcmToken, title, body, notificationData);
   }

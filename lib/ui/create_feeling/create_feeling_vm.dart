@@ -23,8 +23,17 @@ class _CreateFeelingViewModel extends GetxController {
   /// Feelings Repository
   final FeelingRepository _feelingRepository = Get.find();
 
+  /// FCM Service
+  final FCMService _fcmService = Get.find();
+
   /// Get storage instance.
   GetStorage _getStorage = Get.find();
+
+  /// The partner.
+  final UserModel _partnerUser = Get.arguments['partnerUser'];
+
+  /// The current user.
+  final UserModel _currentUser = Get.arguments['currentUser'];
 
   @override
   void onInit() async {
@@ -63,8 +72,19 @@ class _CreateFeelingViewModel extends GetxController {
       // Submit feeling to repository.
       await _feelingRepository.createFeeling(feeling: feeling);
 
+      // Send push notification to user.
+      if (_partnerUser.fcmToken != null) {
+        await _fcmService.sendNotificationToUser(
+          fcmToken: _partnerUser.fcmToken!,
+          title: 'Don\'t forget about ${_currentUser.username}\'s feelings!',
+          body: 'See what they\'re feeling right now.',
+        );
+      }
+
       // Send user to success screen.
       Get.toNamed(Globals.ROUTES_CREATE_FEELING_SUCCESS);
-    } catch (e) {}
+    } catch (e) {
+      print(e);
+    }
   }
 }

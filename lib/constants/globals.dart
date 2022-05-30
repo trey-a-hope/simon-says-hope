@@ -16,6 +16,9 @@ class Globals {
   /// Personal
   static const String DARK_MODE_ENABLED = 'dark_mode_enabled';
 
+  /// Limits
+  static const int CREATE_FEELING_CHAR_LIMIT = 30;
+
   /// Package info
   static const String APP_VERSION = 'app_version';
   static const String APP_BUILD_NUMBER = 'build_number';
