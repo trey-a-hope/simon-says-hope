@@ -24,4 +24,8 @@ class Globals {
   //TODO: Change this url.
   static const String DUMMY_PROFILE_PHOTO_URL =
       'https://firebasestorage.googleapis.com/v0/b/critic-a9e44.appspot.com/o/Images%2FProfile.jpeg?alt=media&token=f8d67c2f-9b1c-4cbe-aca5-6da014c504a0';
+
+  /// Firebase Cloud Messaging
+  static const String CLOUD_MESSAGING_SERVER_KEY =
+      'AAAANfTaSSg:APA91bGDKhZOlPswqEdIsIMRGyIX4mTcBv_f5USBwL28vmsmKGNgs0IuWc-d1JjFEDxfbbaEgcP9haxn-snCXJCmaT7ZAxobfroyhmmLy-TKjXNprtWmesSLqGo5tmk__O3W2iUkIHKR';
 }
