@@ -29,18 +29,21 @@ class FeelingListTileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: CachedNetworkImage(
-        imageUrl: user.imgUrl ?? Globals.DUMMY_PROFILE_PHOTO_URL,
-        imageBuilder: (context, imageProvider) => GFAvatar(
-          backgroundImage: imageProvider,
+      leading: SizedBox(
+        width: 50,
+        child: CachedNetworkImage(
+          imageUrl: user.imgUrl ?? Globals.DUMMY_PROFILE_PHOTO_URL,
+          imageBuilder: (context, imageProvider) => GFAvatar(
+            backgroundImage: imageProvider,
+          ),
+          placeholder: (context, url) => Center(
+            child: CircularProgressIndicator(),
+          ),
+          errorWidget: (context, url, error) => Icon(Icons.error),
         ),
-        placeholder: (context, url) => Center(
-          child: CircularProgressIndicator(),
-        ),
-        errorWidget: (context, url, error) => Icon(Icons.error),
       ),
       title: Text(
-        '${user.username}\'s feeling for ${DateFormat('MMM dd, yyyy').format(feeling.created)}',
+        '${user.username}\ ${DateFormat('@ h:mm a').format(feeling.created)}',
       ),
       trailing: Icon(Icons.chevron_right),
       onTap: () => Get.bottomSheet(

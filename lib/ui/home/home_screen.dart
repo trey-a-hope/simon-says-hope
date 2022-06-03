@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:simon_says_hope/constants/globals.dart';
+import 'package:simon_says_hope/enums/calendar_marker_status.dart';
 import 'package:simon_says_hope/model/feeling_model.dart';
 import 'package:simon_says_hope/model/user_model.dart';
 import 'package:simon_says_hope/repositories/feeling_repository.dart';
@@ -9,6 +11,7 @@ import 'package:simon_says_hope/services/auth_service.dart';
 import 'package:simon_says_hope/ui/drawer/drawer_screen.dart';
 import 'package:simon_says_hope/ui/widgets/basic_page_widget.dart';
 import 'package:simon_says_hope/ui/widgets/feeling_list_tile_widget.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 part 'home_vm.dart';
 
@@ -53,14 +56,57 @@ class HomeScreen extends StatelessWidget {
         ),
         child: model.feelings == null
             ? Center(child: CircularProgressIndicator())
-            : ListView.builder(
-                itemCount: model.feelings!.length,
-                itemBuilder: (context, index) => FeelingListTileWidget(
-                  feeling: model.feelings![index],
-                  user: model.users!.firstWhere(
-                    (u) => u.uid == model.feelings![index].uid,
+            : Column(
+                children: <Widget>[
+                  TableCalendar(
+                    firstDay: DateTime.utc(2010, 10, 16),
+                    lastDay: DateTime.utc(2030, 3, 14),
+                    focusedDay: model.focusedDay,
+                    selectedDayPredicate: (day) =>
+                        isSameDay(day, model.selectedDay),
+                    onDaySelected: model.onDaySelected,
+                    calendarFormat: model.calendarFormat,
+                    onFormatChanged: model.onFormatChanged,
+                    eventLoader: model.eventLoader,
+                    calendarBuilders: CalendarBuilders(
+                      markerBuilder: model.markerBuilder,
+                    ),
                   ),
-                ),
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                        'Feelings for ${DateFormat('EEE, MMM d').format(model.selectedDay)}'),
+                  ),
+                  Expanded(
+                    child: model.selectedFeelings.isEmpty
+                        ? Center(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.sentiment_dissatisfied,
+                                  color: Colors.grey,
+                                  size: 150,
+                                ),
+                                Text('No feelings for this day...'),
+                              ],
+                            ),
+                          )
+                        : ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: model.selectedFeelings.length,
+                            itemBuilder: (context, index) =>
+                                FeelingListTileWidget(
+                              feeling: model.selectedFeelings[index],
+                              user: model.users.firstWhere(
+                                (u) =>
+                                    u.uid == model.selectedFeelings[index].uid,
+                              ),
+                            ),
+                          ),
+                  )
+                ],
               ),
       ),
     );

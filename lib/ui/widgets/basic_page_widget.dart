@@ -40,38 +40,34 @@ class BasicPageWidget extends StatelessWidget {
           child: SafeArea(
             child: Column(
               children: [
-                Column(
-                  children: [
-                    //App Bar
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          leftIconButton == null
-                              ? Container(
-                                  width: 50,
-                                )
-                              : CustomIconBoxWidget(
-                                  iconButton: leftIconButton!,
-                                ),
-                          Text(
-                            title,
-                            style: context.textTheme.headline1,
-                          ),
-                          rightIconButton == null
-                              ? Container(
-                                  width: 50,
-                                )
-                              : CustomIconBoxWidget(
-                                  iconButton: rightIconButton!,
-                                ),
-                        ],
+                //App Bar
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      leftIconButton == null
+                          ? Container(
+                              width: 50,
+                            )
+                          : CustomIconBoxWidget(
+                              iconButton: leftIconButton!,
+                            ),
+                      Text(
+                        title,
+                        style: context.textTheme.headline1,
                       ),
-                    ),
-                    const Divider(),
-                  ],
+                      rightIconButton == null
+                          ? Container(
+                              width: 50,
+                            )
+                          : CustomIconBoxWidget(
+                              iconButton: rightIconButton!,
+                            ),
+                    ],
+                  ),
                 ),
+                const Divider(),
                 Expanded(child: child),
               ],
             ),
