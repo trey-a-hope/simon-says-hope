@@ -6,6 +6,7 @@ import 'package:simon_says_hope/enums/calendar_marker_status.dart';
 import 'package:simon_says_hope/model/feeling_model.dart';
 import 'package:simon_says_hope/model/user_model.dart';
 import 'package:simon_says_hope/repositories/feeling_repository.dart';
+import 'package:simon_says_hope/repositories/settings_repository.dart';
 import 'package:simon_says_hope/repositories/user_repository.dart';
 import 'package:simon_says_hope/services/auth_service.dart';
 import 'package:simon_says_hope/ui/drawer/drawer_screen.dart';

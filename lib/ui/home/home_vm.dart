@@ -10,6 +10,9 @@ class _HomeViewModel extends GetxController {
   /// Auth Service.
   final AuthService _authService = Get.find();
 
+  /// Settings repository.
+  final SettingsRepository _settingsRepository = Get.find();
+
   /// List of feelings.
   List<FeelingModel>? _feelings;
   List<FeelingModel>? get feelings => _feelings;
@@ -38,7 +41,7 @@ class _HomeViewModel extends GetxController {
   DateTime get focusedDay => _focusedDay;
 
   /// Calendar format.
-  CalendarFormat _calendarFormat = CalendarFormat.month;
+  late CalendarFormat _calendarFormat;
   CalendarFormat get calendarFormat => _calendarFormat;
 
   /// Calendar marker status, (complete/incomplete),
@@ -60,6 +63,23 @@ class _HomeViewModel extends GetxController {
     try {
       // Fetch current user of the app.
       _currentUser = await _authService.getCurrentUser();
+
+      // Fetch calendar format settings for the app.
+      String? calendarFormat =
+          await _settingsRepository.get(key: 'calendarFormat');
+      switch (calendarFormat) {
+        case 'twoWeeks':
+          _calendarFormat = CalendarFormat.twoWeeks;
+          break;
+        case 'week':
+          _calendarFormat = CalendarFormat.week;
+          break;
+        case 'month':
+        case null:
+        default:
+          _calendarFormat = CalendarFormat.month;
+          break;
+      }
 
       // Fetch the two users of the app.
       _users = await _userRepository.retrieveUsers();
@@ -124,7 +144,13 @@ class _HomeViewModel extends GetxController {
   // Action called when the user changes the format of the calendar.
   void onFormatChanged(CalendarFormat onFormatChangedCalendarFormat) {
     _calendarFormat = onFormatChangedCalendarFormat;
-    update();
+
+    // Update calendar format to user settings.
+    _settingsRepository
+        .put(key: 'calendarFormat', value: onFormatChangedCalendarFormat.name)
+        .then(
+          (value) => update(),
+        );
   }
 
   // Return the events for a given day.
