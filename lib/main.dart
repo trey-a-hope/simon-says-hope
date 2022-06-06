@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get_storage/get_storage.dart';ƒ
+import 'package:get_storage/get_storage.dart';
 import 'constants/app_routes.dart';
 import 'constants/app_themes.dart';
 import 'constants/globals.dart';
